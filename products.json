@@ -1,5 +1,42 @@
 [
   {
+    "title": "iphone",
+    "description": "S19 PRO",
+    "code": "1",
+    "price": "12",
+    "status": true,
+    "stock": "100",
+    "category": "Asic",
     "id": 1
+  },
+  {
+    "title": "Bitmain",
+    "description": "S19 PRO",
+    "code": "3",
+    "price": "12",
+    "status": true,
+    "stock": "100",
+    "category": "Asic",
+    "id": 2
+  },
+  {
+    "title": "Bitmain",
+    "description": "S19 PRO",
+    "code": "4",
+    "price": "12",
+    "status": true,
+    "stock": "100",
+    "category": "Asic",
+    "id": 3
+  },
+  {
+    "title": "Bitmain",
+    "description": "S19 PRO",
+    "code": "5",
+    "price": "12",
+    "status": true,
+    "stock": "100",
+    "category": "Asic",
+    "id": 4
   }
 ]

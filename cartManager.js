@@ -37,7 +37,6 @@ class CartManager {
       const existingProductIndex = cart.products.findIndex(
         (product) => product.product === productId
       );
-
       if (existingProductIndex !== -1) {
         cart.products[existingProductIndex].quantity += quantity;
       } else {

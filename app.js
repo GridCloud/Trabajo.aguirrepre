@@ -40,6 +40,9 @@ app.get('/api/products/:pid', async (req, res) => {
 // Ruta POST /api/products
 app.post('/api/products', async (req, res) => {
   const { title, description, code, price, stock, category } = req.body;
+  if(!title || !description || !code || !price || !stock || !category){
+    res.status(400).send("Es obligatiorio completar todos los campos")
+  }else{
     try {
       const newProduct = await productManager.addProduct({
         title,
@@ -55,12 +58,13 @@ app.post('/api/products', async (req, res) => {
       console.error('Error al agregar el producto:', error);
       res.status(500).send('Error al agregar el producto');
     }
-  });
+  }});
 
 // Ruta PUT /api/products/:pid
 app.put('/api/products/:pid', async (req, res) => {
   const productId = req.params.pid;
   const updatedFields = req.body;
+  console.log(productId);
   try {
     const updatedProduct = await productManager.updateProduct(productId, updatedFields);
     if (updatedProduct) {
