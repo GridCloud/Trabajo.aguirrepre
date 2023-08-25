@@ -1,0 +1,21 @@
+{
+  "id": "1691441134271",
+  "products": [
+    {
+      "product": "1",
+      "quantity": 2
+    },
+    {
+      "product": "2",
+      "quantity": 1
+    },
+    {
+      "product": "3",
+      "quantity": 1
+    },
+    {
+      "product": "4",
+      "quantity": 1
+    }
+  ]
+}

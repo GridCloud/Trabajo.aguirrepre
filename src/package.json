@@ -1,0 +1,21 @@
+{
+  "name": "trabajo.aguirepre",
+  "version": "1.0.0",
+  "main": "app.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dirname": "^0.1.0",
+    "esm": "^3.2.25",
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "mongoose": "^7.4.4",
+    "url": "^0.11.1"
+  },
+  "description": ""
+}
