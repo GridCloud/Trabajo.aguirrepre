@@ -2,9 +2,20 @@ import { carritoModel } from "../models/cart.model.js";
 
 
 class CarritoManager {
-    async createCart(obj){
+    async createCart(obj) {
         try {
-            const newCarrito = await carritoModel.create(obj)
+            const newCarrito = await carritoModel.create(obj);
+            // Realizar el proceso de población aquí
+            const populatedCarrito = await newCarrito.populate('products.productId');
+            return populatedCarrito;
+        } catch (error) {
+            throw error;
+        }
+    }
+    
+    async getCarrito(){
+        try {
+            const newCarrito = await carritoModel.find({})
             return newCarrito
         } catch (error) {
             throw error
@@ -25,6 +36,17 @@ class CarritoManager {
         } catch (error) {
             return error
         }
+    }
+    async deleteAll(){
+        try {
+            const response = await carritoModel.deleteMany()
+            return response
+        } catch (error) {
+            throw error
+        }
+    }
+    async addToCart(obj){
+
     }
 
 }

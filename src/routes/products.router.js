@@ -4,13 +4,15 @@ import { productsManager } from '../dao/managers/productManagerMongo.js'
 const router = Router()
 
 router.get('/', async (req, res) => {
+  const{limit, page, query, sort } = req.query;  
   try {
-    const productos = await productsManager.getProducts()
-    if (productos.length) {
-      res.status(200).json({ message: 'Products:', productos })
-    } else {
-      res.status(200).json({ message: 'No products found' })
-    }
+    const productos = await productsManager.getProducts(limit, page, query, sort)
+    // if (productos.length) {
+    //   res.status(200).json({ message: 'Productos:', productos })
+    // } else {
+    //   res.status(200).json({ message: 'No hay productos agregados' })
+    // }
+    res.status(200).json(productos);
   } catch (error) {
     res.status(500).json({ error })
   }
@@ -32,14 +34,14 @@ router.get('/:id', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
-  const { nombre, precio, alto, ancho, largo, stock } = req.body
+  const { nombre, precio,identificador, color, alto, ancho, largo, stock } = req.body
   console.log(req.body);
-  if (!nombre || !precio || !alto || !ancho || !largo || !stock) {
+  if (!nombre || !precio || !identificador || !color || !alto || !ancho || !largo || !stock) {
     return res.status(400).json({ message: 'Datos Faltantes' })
   }
   try {
     const newProduct = await productsManager.createProduct(req.body)
-    res.status(200).json({ message: 'Producto Creado', user: newProduct })
+    res.status(200).json({ message: 'Producto Creado', Producto: newProduct })
   } catch (error) {
     res.status(500).json({ error })
   }
@@ -68,6 +70,19 @@ router.delete('/:id', async (req, res) => {
     res.status(500).json({ error });
   }
 });
+router.delete("/", async(req, res) =>{
+  try {
+    const products = await productsManager.getProducts()
+    if (products.length) {
+      const deleteProducts = await productsManager.deleteAll()
+      res.status(200).json({message: "Productos eliminados"})
+    } else {
+      res.status(200).json({ message: 'No hay productos para eliminar' })
+    }
+  } catch (error) {
+    
+  }
+})
 
 
 export default router
